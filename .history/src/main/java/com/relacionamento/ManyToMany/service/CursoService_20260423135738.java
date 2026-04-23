@@ -38,7 +38,7 @@ public class CursoService {
 
         List<Aluno> lista = new ArrayList<>();
         lista = curso.getAlunos();
-        lista.add(aluno);
+        lista.add(idaluno);
 
         curso.setAlunos(lista);
 

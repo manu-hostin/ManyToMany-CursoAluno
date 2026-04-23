@@ -21,7 +21,7 @@ public class CursoService {
     
     private final CursoRepository repository;
     private final CursoMapper mapper;
-    private final AlunoRepository alunoRepository;
+    private final AlunoRepository alunoRepository
 
     public CursoResposta cadastrarCurso (CursoRequisicao requisicao) {
         Curso curso = repository.save(mapper.paraEntidade(requisicao));
@@ -29,7 +29,7 @@ public class CursoService {
         return mapper.paraResposta(curso);
     }
 
-    public CursoResposta atualizarCursoResposta (int id, int alunoId) {
+    public CursoResposta atualizarCursoResposta (int id, int idaluno) {
         Curso curso = repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Curso não existe!"));
 
@@ -38,7 +38,7 @@ public class CursoService {
 
         List<Aluno> lista = new ArrayList<>();
         lista = curso.getAlunos();
-        lista.add(aluno);
+        lista.add(idaluno);
 
         curso.setAlunos(lista);
 

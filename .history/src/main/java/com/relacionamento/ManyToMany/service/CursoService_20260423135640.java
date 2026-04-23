@@ -10,7 +10,6 @@ import com.relacionamento.ManyToMany.DTO.CursoResposta;
 import com.relacionamento.ManyToMany.mapper.CursoMapper;
 import com.relacionamento.ManyToMany.model.Aluno;
 import com.relacionamento.ManyToMany.model.Curso;
-import com.relacionamento.ManyToMany.repository.AlunoRepository;
 import com.relacionamento.ManyToMany.repository.CursoRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ public class CursoService {
     
     private final CursoRepository repository;
     private final CursoMapper mapper;
-    private final AlunoRepository alunoRepository;
 
     public CursoResposta cadastrarCurso (CursoRequisicao requisicao) {
         Curso curso = repository.save(mapper.paraEntidade(requisicao));
@@ -29,12 +27,9 @@ public class CursoService {
         return mapper.paraResposta(curso);
     }
 
-    public CursoResposta atualizarCursoResposta (int id, int alunoId) {
+    public CursoResposta atualizarCursoResposta (int id, int aluno) {
         Curso curso = repository.findById(id)
             .orElseThrow(() -> new RuntimeException("Curso não existe!"));
-
-        Aluno aluno = alunoRepository.findById(alunoId)
-            .orElseThrow(() -> new RuntimeException("Aluno não existe!"));
 
         List<Aluno> lista = new ArrayList<>();
         lista = curso.getAlunos();

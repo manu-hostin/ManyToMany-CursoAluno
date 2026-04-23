@@ -36,7 +36,7 @@ public class CursoController {
             .body(service.buscarCurso(id));
     }
 
-    @PutMapping("/{id}/matricular/{idAluno}")
+    @PutMapping("/{id}/matricular/{alunoid}")
     public ResponseEntity<CursoResposta> atualizarCurso (@PathVariable int id, @PathVariable int idAluno) {
         return ResponseEntity.status(HttpStatus.OK)
             .body(service.atualizarCursoResposta(id, idAluno));

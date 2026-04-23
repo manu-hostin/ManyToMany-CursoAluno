@@ -1,7 +1,5 @@
 package com.relacionamento.ManyToMany.mapper;
 
-import org.springframework.stereotype.Component;
-
 import com.relacionamento.ManyToMany.DTO.CursoRequisicao;
 import com.relacionamento.ManyToMany.DTO.CursoResposta;
 import com.relacionamento.ManyToMany.model.Curso;

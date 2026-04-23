@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.relacionamento.ManyToMany.DTO.CursoRequisicao;
 import com.relacionamento.ManyToMany.DTO.CursoResposta;
+import com.relacionamento.ManyToMany.model.Aluno;
 import com.relacionamento.ManyToMany.service.CursoService;
 
 import jakarta.validation.Valid;
@@ -36,9 +37,9 @@ public class CursoController {
             .body(service.buscarCurso(id));
     }
 
-    @PutMapping("/{id}/matricular/{idAluno}")
-    public ResponseEntity<CursoResposta> atualizarCurso (@PathVariable int id, @PathVariable int idAluno) {
+    @PutMapping("/{id}")
+    public ResponseEntity<CursoResposta> atualizarCurso (@PathVariable int id, @PathVariable Aluno aluno) {
         return ResponseEntity.status(HttpStatus.OK)
-            .body(service.atualizarCursoResposta(id, idAluno));
+            .body(service.atualizarCursoResposta(id, aluno));
     }
 }
