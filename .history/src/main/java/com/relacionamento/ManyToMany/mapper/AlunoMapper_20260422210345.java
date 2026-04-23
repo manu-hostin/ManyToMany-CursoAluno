@@ -1,0 +1,23 @@
+package com.relacionamento.ManyToMany.mapper;
+
+import com.relacionamento.ManyToMany.DTO.AlunoRequisicao;
+import com.relacionamento.ManyToMany.model.Aluno;
+import com.relacionamento.ManyToMany.model.Curso;
+
+public class AlunoMapper {
+
+    public Aluno paraEntidade (AlunoRequisicao requisicao) {
+        return new Aluno(
+            requisicao.nome(),
+            requisicao.cursos()
+        );
+    }
+
+    public CursoResposta paraResposta (Curso curso) {
+        return new CursoResposta(
+            curso.getId(),
+            curso.getNome(),
+            curso.getAlunos()
+        );
+    }
+}
